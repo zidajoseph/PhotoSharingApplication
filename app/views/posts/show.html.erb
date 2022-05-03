@@ -1,0 +1,58 @@
+<!-- Page Header-->
+<header class="masthead" style="background-image: url(<%= asset_path 'home-bg.jpg' %>)">
+    <div class="container position-relative px-4 px-lg-5">
+        <div class="row gx-4 gx-lg-5 justify-content-center">
+            <div class="col-md-10 col-lg-8 col-xl-7">
+                <div class="page-heading">
+                    <h1>Écran de détails</h1>
+                    <span class="subheading">pour une double confirmation</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+<!-- Main Content-->
+<main class="mb-4">
+    <div class="container px-4 px-lg-5">
+        <div class="row gx-4 gx-lg-5 justify-content-center">
+            <div class="col-md-10 col-lg-8 col-xl-7">
+            <span class="subheading">confirmez deux fois le contenu que vous avez posté,
+                si nécessaire, modifiez-les pour qu'ils correspondent aux résultats escomptés !</span>
+                <div class="my-5">
+                  <p id="notice"><%= notice %></p>
+
+                  <p>
+                    <strong>Content:</strong>
+                    <%= @post.content %>
+                  </p>
+
+                  <p>
+                    <strong>Image:</strong>
+                    <%= image_tag @post.image.url if @post.image && @post.image.url %>              
+                  </p>
+
+                  <p>
+                    publish by <%=@post.user.name%>
+                  </p>
+
+                  <p>
+                        <% unless @post.user_id == current_user.id %>
+                            <% if @favorite.present? %>
+                                <%= link_to 'Unfavorite', favorite_path(id: @favorite.id), method: :delete, class: 'btn btn-danger' %>
+                            <% else %>
+                                <%= link_to 'Favorite', favorites_path(post_id: @post.id), method: :post, class: 'btn btn-primary' %>
+                            <% end %>
+                        <% end %>
+                    </p>
+
+                    <% if @post.user_id == current_user.id %>
+                        <%= link_to 'Edit', edit_post_path(@post) %> | <%= link_to 'Back', posts_path %>
+                    <% else %>
+                        <%= link_to 'Back', posts_path %>
+                    <% end %>    
+                  
+              </div>
+            </div>
+        </div>
+    </div>
+</main>
