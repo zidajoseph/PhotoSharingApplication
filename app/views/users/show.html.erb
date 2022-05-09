@@ -22,9 +22,12 @@
 
                 <p>
                     <strong>Image:</strong>
-                    <%= @user.image.url %> 
                     <%= image_tag @user.image.url if @user.image && @user.image.url %>                   
-                  </p>
+                </p>
+                <% if @user.id == current_user.id %>
+                        <%= link_to 'Edit', edit_user_path(@user) %>
+              <% end %> 
+              <%= link_to 'Back', posts_path %>
             </div>
         </div>
     </div>

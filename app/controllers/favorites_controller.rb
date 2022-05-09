@@ -7,6 +7,10 @@ class FavoritesController < ApplicationController
     def show
         @favorite = current_user.favorites.find_by(post_id: @post.id)
     end
+
+    def show
+        @favorites = current_user.favorites
+    end
     
     def destroy
         favorite = current_user.favorites.find_by(id: params[:id]).destroy

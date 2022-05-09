@@ -16,6 +16,9 @@ class PostsController < ApplicationController
   end
 
   def edit
+    if @post.user.id != current_user.id
+      redirect_to posts_path, notice: "Can't access this page"
+    end  
   end
 
   def create
