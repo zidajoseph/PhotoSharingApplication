@@ -17,26 +17,37 @@
         <div class="row gx-4 gx-lg-5 justify-content-center">
             <div class="col-md-10 col-lg-8 col-xl-7">              
               <%= form_with(model: @user, local: true) do |f| %>
-                <%= f.label :name %>
-                <%= f.text_field :name %>
+                <p>
+                    <%= f.label :name %>
+                    <%= f.text_field :name %>
+                </p>
+                
               
-                <%= f.label :email %>
-                <%= f.email_field :email %>
-              
-                <%= f.label :password %>
-                <%= f.password_field :password %>
-              
-                <%= f.label :password_confirmation %>
-                <%= f.password_field :password_confirmation %>
+                <p>
+                    <%= f.label :email %>
+                    <%= f.email_field :email %>
+                </p>
 
-                <div class="field">
+                <p>
+                    <%= f.label :password %>
+                    <%= f.password_field :password %>
+                </p>
+
+                <p>
+                    <%= f.label :password_confirmation %>
+                    <%= f.password_field :password_confirmation %>
+                </p>
+
+                <p>
                     <%= f.label :image %>
                     <%= image_tag(@user.image.url) if @user.image && @user.image.url %>
                     <%= f.file_field :image %>
                     <%= f.hidden_field :image_cache %>
-                </div>
+                </p>
               
-                <%= f.submit "Create my account" %>
+                <p>
+                    <%= f.submit "Create my account" %>
+                </p>
               <% end %>
             </div>
         </div>

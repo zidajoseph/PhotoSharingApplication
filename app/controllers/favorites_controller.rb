@@ -8,7 +8,7 @@ class FavoritesController < ApplicationController
         @favorite = current_user.favorites.find_by(post_id: @post.id)
     end
 
-    def show
+    def index
         @favorites = current_user.favorites
     end
     
